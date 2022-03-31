@@ -2,7 +2,6 @@ const { createYield, isExportDeclaration, addSyntheticLeadingComment } = require
 /// <reference types="cypress" />
 
 
-
 describe('First API test', () => {
 
     beforeEach('Login', () => {
@@ -13,14 +12,8 @@ describe('First API test', () => {
 
     it('Fake tags', () => {
 
-        cy.fixture('tags').then((tagsJson) => {
-            this.tagsJson = tagsJson
-        })
-
-        const tagsNames = tagsJson
-
         cy.get('.tag-pill').each((popularTags, tagIndex) => {
-            cy.wrap(popularTags).should('contain', tagsNames[tagIndex])
+            cy.wrap(popularTags).should('contain', jsonData[tagIndex])
 
         })
     })
